@@ -68,3 +68,38 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+fos_rest:
+   routing_loader:
+       default_format: json
+   view:
+       view_response_listener: force
+       force_redirects:
+         html: true
+       formats:
+           json: true
+           xml: true
+           rss: false
+       templating_formats:
+           html: true
+       mime_types:
+           json: ['application/json', 'application/x-json', 'application/vnd.example-com.foo+json']
+           rss: 'application/rss+xml'
+           jpg: 'image/jpeg'
+           png: 'image/png'
+   body_listener:
+     default_format:       json
+   param_fetcher_listener: true
+   allowed_methods_listener: true
+   format_listener:
+       rules:
+           - { path: '^/', priorities: [html, json, xml, rss, "*/*", ding], fallback_format: json, prefer_extension: true }
+   serializer:
+     serialize_null: false
+   exception:
+       codes:
+           'Symfony\Component\HttpKernel\Exception\HttpException': 400
+           'Symfony\Component\HttpKernel\Exception\BadRequestHttpException': 400
+       messages:
+           'Symfony\Component\HttpKernel\Exception\HttpException': true
+           'Symfony\Component\HttpKernel\Exception\BadRequestHttpException': true
