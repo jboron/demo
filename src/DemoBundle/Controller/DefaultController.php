@@ -6,8 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    /**
+    @Get("/demo/test")
+     */
+    public function getIntercoTestAction()
     {
-        return $this->render('DemoBundle:Default:index.html.twig');
+        die('test ok');
     }
+
 }

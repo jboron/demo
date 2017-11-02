@@ -1,4 +1,4 @@
-demo::
+demo:
    resource: "@DemoBundle/Controller/DefaultController.php"
    type:     rest
 app:
