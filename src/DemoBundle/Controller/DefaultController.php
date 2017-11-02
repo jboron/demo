@@ -35,4 +35,35 @@ class DefaultController extends Controller
         die('doc ok');
     }
 
+
+    /**
+     * Return array serialzed with the Bundle JMS
+     *
+     * @ApiDoc(
+     *  section="DOC_4",
+     *  description="Serializer d’objet",
+     * )
+     * @Get("/interco/city")
+     */
+    public function getIntercoCityAction()
+    {
+
+        return array (
+            0 =>
+                array (
+                    'city' => 'Sant Julià de Lòria',
+                    'region' => '06',
+                    'country' => 'AD',
+                    'latitude' => '42.46372',
+                    'longitude' => '1.49129',
+                ),
+            1 =>
+                array (
+                    'city' => 'Pas de la Casa',
+                    'region' => '03',
+                    'country' => 'AD',
+                    'latitude' => '42.54277',
+                    'longitude' => '1.73361',
+                ));
+    }
 }
